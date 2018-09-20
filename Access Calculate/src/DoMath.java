@@ -31,8 +31,8 @@ public class DoMath {
 		//returns a mixed number after being provided an improper fraction
 		System.out.println(Calculate.toMixedNum(7, 2));
 		
-		//insert foil method
-		
+		//foil method - returns a quadratic equation, part 1 
+		System.out.println(Calculate.foil(2, 3, 6, -7, "x"));
 		
 		// returns if a number is divisible by another number, part 2
 		System.out.println(Calculate.isDivisibleBy(21, 7));
@@ -50,8 +50,7 @@ public class DoMath {
 		System.out.println(Calculate.min(3, 7));
 		
 		//returns a double rounded to two decimal places
-		//System.out.println(Calculate.round2(10.019));
-		
+		System.out.println(Calculate.round2(4.233));
 		//returns the number of a number raised to the power of another number 
 		System.out.println(Calculate.exponent(2, 4));
 		
@@ -62,9 +61,10 @@ public class DoMath {
 			System.out.println(Calculate.isPrime(6));
 			
 		//returns the greatest common factor of two integers
-			System.out.println(Calculate.gcf(252,105));
+			System.out.println(Calculate.gcf(64,32));
 
-		
+		//returns the square root of a number rounded to two decimal places
+			System.out.println(Calculate.sqrt(64));
 		
 		
 		

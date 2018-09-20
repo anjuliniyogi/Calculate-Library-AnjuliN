@@ -53,13 +53,11 @@ public class Calculate {
 			return ans;
 		}
 	
-	//insert foil method, part 1 
-		
-		
-		
-		
-		
-		
+	//foil method - returns a quadratic equation, part 1 
+		public static String foil(int a, int b, int c, int d, String x) {
+			String ans = (a*c) + x + "^2" + "+" + ((a*d)+(b*c)) + x + (b*d);
+			return ans;
+		}
 		
 		
 	// returns if a number is divisible by another number, part 2
@@ -118,12 +116,18 @@ public class Calculate {
 					}	
 				}	
 
-
 	//returns a double rounded to two decimal places, part 2
-		public static double round2(double d, int decimals) {
-			double y = d * Math.round(d);
-			return y;
+		public static double round2(double d) {
+			double d2 = d*100;
+			int i = (int) d2;
+			 double d3 = i;
+			 double d4 = d3/100;
+			 if(i%10>=5) {
+				d4 = d4 + .01;
+			 }
+			 return d4;
 		}
+	
 	
 	//returns the number of a number raised to the power of another number, part 3
 		public static double exponent(double a, int b) {
@@ -173,37 +177,16 @@ public class Calculate {
 			return 1;
 		}
 		
-	//returns the square root of a number 
-		/*
+	//returns the square root of a number to two decimal places
 		public static double sqrt(double num) {
-			double guess = 0; 
-			double answer;
-			if(num == 0) {
-				answer = 0;
-				return 0;
+			double guess = num/2.0;
+			while (guess*guess>0.01) {
+				guess = 0.5*(num/guess + guess);
 			}
-			else if(num > 0) {
-				answer = num / 2;
-					while(absValue(guess - answer) >= 0.005) {
-					guess = answer;
-					answer = (guess + (num / guess)) / 2;
-				}		
-			}
-			else {
-				System.out.println("no square root of negative number");
-			}
-			return round2(answer);
+			return Calculate.round2(guess);
+			
 		}
-		*/
 	
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 }
