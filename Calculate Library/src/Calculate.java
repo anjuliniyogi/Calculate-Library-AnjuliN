@@ -62,6 +62,9 @@ public class Calculate {
 		
 	// returns if a number is divisible by another number, part 2
 		public static boolean isDivisibleBy(int a, int b) {
+			if(a<0|| b<0 ) {
+				throw new IllegalArgumentException("no solution");
+			}
 				boolean ok = true;
 				boolean no = false;
 			if(a % b == 0) {
@@ -79,13 +82,14 @@ public class Calculate {
 		}
 	//returns the largest number of two doubles, part 2
 		public static double max(double a, double b) {
+	
 			if(a > b) {
 				return a; 
-			} else  {
+			} 
+			else {
 				return b; 
-			}	
-		}	
-	
+			}
+		}
 	//returns the largest number of three doubles, part 2
 		public static double max(double a, double b, double c) {
 					if(a > b && a > c) {
@@ -128,16 +132,23 @@ public class Calculate {
 			 return d4;
 		}
 	
-	
 	//returns the number of a number raised to the power of another number, part 3
 		public static double exponent(double a, int b) {
-			double x = Math.pow(a, b);
-			return x;
-
+			if(b==0) {
+				throw new IllegalArgumentException("your exponent is a negative number");
+			}
+		double answer = a;
+		for(int i = 0; i<b-1; i++)	{
+			answer*=a;
+			}
+		return answer;
 		}
 	
 	//returns the factorial of the number 
 		public static int factorial(int n) {
+			if (n <=0) {
+				throw new IllegalArgumentException("the value of your input is negative");
+			}
 			if (n == 0)
 		          return 0; 
 			else 
@@ -179,14 +190,40 @@ public class Calculate {
 		
 	//returns the square root of a number to two decimal places
 		public static double sqrt(double num) {
-			double guess = num/2.0;
-			while (guess*guess>0.01) {
-				guess = 0.5*(num/guess + guess);
+			if (num < 0 ) {
+				throw new IllegalArgumentException ("the value of the input is negative"); 
 			}
+				
+			double guess = num/2.0;
+				while (guess*guess>0.01) {
+					guess = 0.5*(num/guess + guess);
+				}
 			return Calculate.round2(guess);
 			
 		}
-	
-		
+	// returns the roots of a quadratic equation
+	 public static String quadForm(int x, int y, int z) {
+			String result;
+		 	double answer = discriminant(x, y, z);
+		 if(answer < 0) {
+			 throw new IllegalArgumentException("no real roots");
+		 }
+		 else if(answer == 0) {
+			double answerNext = (answer - y)/(2*x);
+			result = answerNext + " ";
+			return result;
+		 }
+		 else  {
+			double answer1 = (-y - sqrt(square(y) - 4 * x * z)) / (2 * x); 
+			double answer2 = (-y + sqrt(square(y) - 4 * x * z)) / (2 * x);
+				if(answer1 < answer2) {
+					result = round2(answer1) + " and " + round2(answer2);
+				}else {
+					result = round2(answer2) + " and " + round2(answer1);
+				}
+			}
+			return result;
+		 
+	 }
 	
 }

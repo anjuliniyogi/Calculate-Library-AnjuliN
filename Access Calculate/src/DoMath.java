@@ -51,8 +51,9 @@ public class DoMath {
 		
 		//returns a double rounded to two decimal places
 		System.out.println(Calculate.round2(4.233));
+		
 		//returns the number of a number raised to the power of another number 
-		System.out.println(Calculate.exponent(2, 4));
+		System.out.println(Calculate.exponent(3, 3));
 		
 		//returns the factorial of the number 
 		System.out.println(Calculate.factorial(4));
