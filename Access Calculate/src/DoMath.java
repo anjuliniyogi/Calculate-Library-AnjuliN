@@ -3,10 +3,9 @@ public class DoMath {
 
 	public static void main(String[] args) {
 		
-		
 		//returns the square of an integer, part 1 
-		System.out.println(Calculate.square(3));
-		
+		System.out.println(Calculate.square(3));	
+				
 		//returns the square of an integer, part 1 		
 		System.out.println(Calculate.cube(4));
 		
@@ -18,13 +17,13 @@ public class DoMath {
 
 		//converts an angle measure in radians into degrees
 		System.out.println(Calculate.toDegrees(6.28318));
-		
+				
 		//converts an angle measure in degrees to radians
-		System.out.println(Calculate.toRadians(240) + " * pi");
+		System.out.println(Calculate.toRadians(270) + " * pi");
 		
 		//returns the discriminant after being provided a, b, c
 		System.out.println(Calculate.discriminant(1,5,6));
-		
+	
 		//returns an Improper fraction after being provided a mixed number 
 		System.out.println(Calculate.toImproperFraction(3, 1, 2));
 		
@@ -50,7 +49,7 @@ public class DoMath {
 		System.out.println(Calculate.min(3, 7));
 		
 		//returns a double rounded to two decimal places
-		System.out.println(Calculate.round2(4.233));
+		System.out.println(Calculate.round2(3.999));
 		
 		//returns the number of a number raised to the power of another number 
 		System.out.println(Calculate.exponent(3, 3));
@@ -65,12 +64,11 @@ public class DoMath {
 			System.out.println(Calculate.gcf(64,32));
 
 		//returns the square root of a number rounded to two decimal places
-			System.out.println(Calculate.sqrt(64));
+			System.out.println(Calculate.sqrt(77));
 		
+		// returns the roots of a quadratic equation
+			System.out.println(Calculate.quadForm(1,5,6));
 		
-		
-		
-	
 	}
 
 }

@@ -25,19 +25,19 @@ public class Calculate {
 
 	//converts an angle measure in radians into degrees, part 1
 		public static double toDegrees(double r) {
-			double deg = (r/3.14159)*180;
+			double deg = round2(r/3.14159)*180;
 			return deg;	
 		}
 		
 	//converts an angle measure in degrees to radians, part 1 
 		public static double toRadians(double d) {
-			double rad = (d/180);
+			double rad = round2(d/180);
 			return rad;
 		}
 		
 	//returns the discriminant after being provided a, b, c, part 1 
 		public static double discriminant(double a, double b, double c) {
-			double dis = Math.sqrt((b*b)-(4*a*c));
+			double dis = ((b*b)-(4*a*c));
 			return dis;
 		}
 		
@@ -122,14 +122,39 @@ public class Calculate {
 
 	//returns a double rounded to two decimal places, part 2
 		public static double round2(double d) {
-			double d2 = d*100;
+		if (d < 0) {
+			double d2 = absValue(d)*1000;
 			int i = (int) d2;
-			 double d3 = i;
-			 double d4 = d3/100;
-			 if(i%10>=5) {
-				d4 = d4 + .01;
-			 }
-			 return d4;
+			double d4 = i;
+				if(i % 10 >= 5) {	
+					d4 = (d4 + 10)/10; 
+					int d5 = (int) d4;
+					return (d5/100.0)*-1;
+				}
+				else {	
+					d4 = d4/10; 
+					int d5 = (int) d4;
+					return (d5/100.0)*-1;
+					}
+			}
+		
+		else {
+			double d2 = d*1000;
+			int i = (int) d2;
+			double d4 = i;
+				if(i % 10 >= 5) {	
+					d4 = (d4 + 10)/10; 
+					int d5 = (int) d4;
+					return d5/100.0;
+				}
+				else {	
+					d4 = d4/10; 
+					int d5 = (int) d4;
+					return d5/100.0;
+					}
+			}
+		
+
 		}
 	
 	//returns the number of a number raised to the power of another number, part 3
@@ -146,13 +171,13 @@ public class Calculate {
 	
 	//returns the factorial of the number 
 		public static int factorial(int n) {
-			if (n <=0) {
+			if (n < 0) {
 				throw new IllegalArgumentException("the value of your input is negative");
 			}
 			if (n == 0)
-		          return 0; 
+		          return 1; 
 			else 
-		        return n*factorial(n-1);
+		        return n * factorial(n-1);
 		}
 		
 	//returns if a number is prime of not
@@ -160,8 +185,9 @@ public class Calculate {
 					boolean x = true;
 					boolean y = false;
 						if (num <= 0) {
-						return y;
+					throw new IllegalArgumentException ("the number is not prime" );
 					}
+						
 				for(int i = 2; i <= num - 1; i++) {
 						if (Calculate.isDivisibleBy(num, i) == true) {
 							return y;
@@ -194,11 +220,11 @@ public class Calculate {
 				throw new IllegalArgumentException ("the value of the input is negative"); 
 			}
 				
-			double guess = num/2.0;
-				while (guess*guess>0.01) {
+			double guess = num; 
+				while ((guess*guess)-num >0.01) {
 					guess = 0.5*(num/guess + guess);
 				}
-			return Calculate.round2(guess);
+			return round2(guess);
 			
 		}
 	// returns the roots of a quadratic equation
@@ -214,12 +240,12 @@ public class Calculate {
 			return result;
 		 }
 		 else  {
-			double answer1 = (-y - sqrt(square(y) - 4 * x * z)) / (2 * x); 
-			double answer2 = (-y + sqrt(square(y) - 4 * x * z)) / (2 * x);
+			 double answer1 = (-y + (sqrt(discriminant(x,y,z))))/2*x;
+			 double answer2 = (-y - (sqrt(discriminant(x,y,z))))/2*x;;
 				if(answer1 < answer2) {
-					result = round2(answer1) + " and " + round2(answer2);
-				}else {
 					result = round2(answer2) + " and " + round2(answer1);
+				}else {
+					result = round2(answer1) + " and " + round2(answer2);
 				}
 			}
 			return result;
